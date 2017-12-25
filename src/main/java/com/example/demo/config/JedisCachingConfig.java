@@ -11,28 +11,25 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
  *
- * User: Phil.
- * Date: 2017/12/22
- * Time: 16:46
- * Created by IntelliJ IDEA.
+ * @author phil
  */
 @Configuration
-public class JedisCachingConfig  extends CachingConfigurerSupport{
+public class JedisCachingConfig extends CachingConfigurerSupport {
 
-    @Bean
-    public CacheManager cacheManager(RedisTemplate<?, ?> redisTemplate) {
-        return new RedisCacheManager(redisTemplate);
-    }
+	@Bean
+	public CacheManager cacheManager(RedisTemplate<?, ?> redisTemplate) {
+		return new RedisCacheManager(redisTemplate);
+	}
 
-    @Bean
-    public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory) {
-        RedisTemplate<String, String> redisTemplate = new RedisTemplate<>();
-        redisTemplate.setConnectionFactory(factory);
-        // 使用String格式序列化缓存键
-        redisTemplate.setKeySerializer(new StringRedisSerializer());
-        redisTemplate.setValueSerializer(new StringRedisSerializer());
+	@Bean
+	public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory) {
+		RedisTemplate<String, String> redisTemplate = new RedisTemplate<>();
+		redisTemplate.setConnectionFactory(factory);
+		// 使用String格式序列化缓存键
+		redisTemplate.setKeySerializer(new StringRedisSerializer());
+		redisTemplate.setValueSerializer(new StringRedisSerializer());
 
-        return redisTemplate;
-    }
+		return redisTemplate;
+	}
 
 }

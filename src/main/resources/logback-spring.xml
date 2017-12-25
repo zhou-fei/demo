@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+    <!-- 加载变量定义资源 -->
+    <property resource="application.yml"/>
+
+    <!-- 配置ConsoleAppender实例 -->
+    <!--<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">-->
+        <!--&lt;!&ndash; encoders are assigned the type-->
+             <!--ch.qos.logback.classic.encoder.PatternLayoutEncoder by default &ndash;&gt;-->
+        <!--<encoder>-->
+            <!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>-->
+            <!--&lt;!&ndash; 此处设置字符集 &ndash;&gt;-->
+            <!--&lt;!&ndash;<charset>utf-8</charset>&ndash;&gt;-->
+        <!--</encoder>-->
+    <!--</appender>-->
+
+    <!-- 配置FileAppender实例 RollingFileAppender不要写错-->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>
+            /var/log/demo/demo.log
+        </file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/var/log/demo/backup/demo.%d{yyyy-MM-dd-HH}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%-5level %logger{36} %C{36} %M %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] - %msg%n</pattern>
+            <!-- 此处设置字符集 -->
+            <charset>utf-8</charset>
+        </encoder>
+    </appender>
+
+    <!--配置DBAppender实例-->
+    <!--<appender name="DB" class="ch.qos.logback.classic.db.DBAppender">-->
+        <!--<connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">-->
+            <!--<driverClass>${jdbc.driver}</driverClass>-->
+            <!--<url>${jdbc.url}</url>-->
+            <!--<user>${jdbc.username}</user>-->
+            <!--<password>${jdbc.password}</password>-->
+        <!--</connectionSource>-->
+    <!--</appender>-->
+
+    <!--<logger name="com.ibatis" level="${jdbc.level}"/>-->
+    <!--<logger name="com.ibatis.common.jdbc.ScriptRunner" level="${jdbc.level}"/>-->
+    <!--<logger name="com.ibatis.common.jdbc.SimpleDataSource" level="${jdbc.level}"/>-->
+    <!--<logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="${jdbc.level}"/>-->
+    <!--<logger name="java.sql.Connection" level="${jdbc.level}"/>-->
+    <!--<logger name="java.sql.ResultSet" level="${jdbc.level}"/>-->
+    <!--<logger name="java.sql.Statement" level="${jdbc.level}"/>-->
+    <!--<logger name="java.sql.PreparedStatement" level="${jdbc.level}"/>-->
+
+    <root>
+        <level value="debug"/>
+        <!-- 生产环境将STDOUT去掉 -->
+        <!--<appender-ref ref="CONSOLE"/>-->
+        <appender-ref ref="FILE"/>
+        <!--<appender-ref ref="DB"/>-->
+    </root>
+</configuration>

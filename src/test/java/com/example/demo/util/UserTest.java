@@ -6,21 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.example.demo.service.UserService;
+
 /**
- *
  * @author phil
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class JTest {
+public class UserTest {
 
 	@Autowired
-	private JedisUtil jedisUtil;
+	private UserService userService;
 
 	@Test
-	public void test2() {
-		String a = jedisUtil.get();
-		//assert ("2222222222".equals(a));
-		System.out.println(jedisUtil.get2());
+	public void test() {
+		userService.test();
 	}
 }
