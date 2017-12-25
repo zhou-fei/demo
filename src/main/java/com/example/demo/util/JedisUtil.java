@@ -17,7 +17,7 @@ import redis.clients.jedis.ShardedJedisPool;
 public class JedisUtil {
 
     @Autowired
-    private ShardedJedisPool jedisPool;
+    private JedisPool jedisPool;
 
     @Autowired
     private RedisTemplate redisTemplate;
