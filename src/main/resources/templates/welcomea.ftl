@@ -54,5 +54,13 @@ updatedDate: ${user.updatedDate?string('yyyy-MM-dd HH:mm:ss')}
 <script src="js/jquery-3.2.1.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
+<script src="js/lodash.core.js"></script>
+<script>
+    $(function () {
+        _.forEach([1, 2, 3], function (item) {
+            console.log(item);
+        });
+    });
+</script>
 </body>
 </html>
