@@ -148,6 +148,31 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<!-- 包含 -->
+				<includes>
+					<include>**/*.vm</include>
+					<include>**/*.yml</include>
+				</includes>
+				<!-- 排除  -->
+				<excludes>
+					<exclude>**/*.log</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.*</include>
+				</includes>
+				<!-- 打包时忽略lib下的jar  -->
+				<excludes>
+					<exclude>lib/**.jar</exclude>
+				</excludes>
+			</resource>
+		</resources>
 	</build>
 
 
