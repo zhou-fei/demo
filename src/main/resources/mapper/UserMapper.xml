@@ -6,10 +6,13 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="sult" jdbcType="VARCHAR" property="sult" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="created_date" jdbcType="TIMESTAMP" property="created_date" />
+    <result column="updated_date" jdbcType="TIMESTAMP" property="updated_date" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, name, username, password, sult
+    id, name, username, password, salt, created_date, updated_date, birthday
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -23,9 +26,11 @@
   </delete>
   <insert id="insert" parameterType="com.example.demo.model.domain.User">
     insert into t_user (id, name, username, 
-      password, sult)
+      password, salt, created_date, 
+      updated_date, birthday)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{sult,jdbcType=VARCHAR})
+      #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{created_date,jdbcType=TIMESTAMP}, 
+      #{updated_date,jdbcType=TIMESTAMP}, #{birthday,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="com.example.demo.model.domain.User">
     insert into t_user
@@ -42,8 +47,17 @@
       <if test="password != null">
         password,
       </if>
-      <if test="sult != null">
-        sult,
+      <if test="salt != null">
+        salt,
+      </if>
+      <if test="created_date != null">
+        created_date,
+      </if>
+      <if test="updated_date != null">
+        updated_date,
+      </if>
+      <if test="birthday != null">
+        birthday,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -59,8 +73,17 @@
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
       </if>
-      <if test="sult != null">
-        #{sult,jdbcType=VARCHAR},
+      <if test="salt != null">
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="created_date != null">
+        #{created_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated_date != null">
+        #{updated_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
       </if>
     </trim>
   </insert>
@@ -76,8 +99,17 @@
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
       </if>
-      <if test="sult != null">
-        sult = #{sult,jdbcType=VARCHAR},
+      <if test="salt != null">
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="created_date != null">
+        created_date = #{created_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated_date != null">
+        updated_date = #{updated_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -87,7 +119,10 @@
     set name = #{name,jdbcType=VARCHAR},
       username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      sult = #{sult,jdbcType=VARCHAR}
+      salt = #{salt,jdbcType=VARCHAR},
+      created_date = #{created_date,jdbcType=TIMESTAMP},
+      updated_date = #{updated_date,jdbcType=TIMESTAMP},
+      birthday = #{birthday,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

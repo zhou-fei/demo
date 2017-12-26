@@ -24,4 +24,8 @@ public class UserService {
 		return userMapper.selectByPrimaryKey(1);
 	}
 
+	public int update(User user) {
+		return userMapper.updateByPrimaryKeySelective(user);
+	}
+
 }

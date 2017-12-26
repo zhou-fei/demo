@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
+import com.example.demo.model.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.demo.service.UserService;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  * @author phil
@@ -50,6 +52,17 @@ public class WelcomeController {
 		model.put("time", new Date());
 		String message = "Hello World";
 		model.put("message", message);
+		model.put("user", userService.getUser());
+		return "welcomea";
+	}
+
+	@PostMapping("/update")
+	public String update(Map<String, Object> model,User user) {
+		logger.info("uuuuuuuuuuuuuu",user);
+		model.put("time", new Date());
+		String message = "Hello World";
+		model.put("message", message);
+		userService.update(user);
 		model.put("user", userService.getUser());
 		return "welcomea";
 	}

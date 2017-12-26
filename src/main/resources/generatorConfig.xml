@@ -43,7 +43,7 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
             <!--<generatedKey column="ID" sqlStatement="DB2" identity="true" />-->
             <columnOverride column="DATE_FIELD" property="startDate" />
             <ignoreColumn column="FRED" />
