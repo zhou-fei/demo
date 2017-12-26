@@ -84,4 +84,9 @@ public class WelcomeController {
 		return response;
 	}
 
+	@GetMapping("/hello")
+	public String hello(Map<String, Object> model, User user) {
+		return "helloworld";
+	}
+
 }
