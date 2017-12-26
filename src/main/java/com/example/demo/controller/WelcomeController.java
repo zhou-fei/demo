@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
+import com.example.demo.model.enumeration.ResponseEnum;
+import com.example.demo.model.vo.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +75,13 @@ public class WelcomeController {
 	public User welcomea1(Map<String, Object> model) {
 		User user = userService.getUser();
 		return user;
+	}
+
+	@GetMapping("/enum")
+	@ResponseBody
+	public Response<String> welcomea2(Map<String, Object> model) {
+		Response<String> response = new Response<String>(ResponseEnum.SUCCESS, "haaaaaaaaaaaa");
+		return response;
 	}
 
 }
