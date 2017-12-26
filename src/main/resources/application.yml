@@ -25,5 +25,6 @@ spring:
 
   freemarker:
     cache: false
+    template-loader-path: classpath:/templates
 
 debug: true

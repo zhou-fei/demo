@@ -11,11 +11,11 @@
     <br>
     name: ${user.name}
     <br>
-    birthday: ${user.birthday?date}
+    birthday: ${user.birthday?string('yyyy-MM-dd')}
     <br>
-    createdDate: ${user.createdDate?date}
+    createdDate: ${user.createdDate?string('yyyy-MM-dd HH:mm:ss')}
     <br>
-    updatedDate: ${user.updatedDate?datetime}
+    updatedDate: ${user.updatedDate?string('yyyy-MM-dd HH:mm:ss')}
 
 	<form id="updateForm" method="post" action="/update">
         <label>
@@ -27,16 +27,11 @@
         </label>
         <br/>
         <label>
-            createdDate<input type="text" name="createdDate" value="${user.createdDate?datetime}"/>
+            createdDate<input type="text" name="createdDate" value="${user.createdDate?string('yyyy-MM-dd HH:mm:ss')}"/>
         </label>
         <br/>
 		<input type="submit" value="提交"/>
 	</form>
-
-
-
-
-
 </body>
 
 </html>
