@@ -13,9 +13,9 @@
     <br>
     birthday: ${user.birthday?date}
     <br>
-    created_date: ${user.created_date?date}
+    createdDate: ${user.createdDate?date}
     <br>
-    updated_date: ${user.updated_date?datetime}
+    updatedDate: ${user.updatedDate?datetime}
 
 	<form id="updateForm" method="post" action="/update">
         <label>
@@ -27,7 +27,7 @@
         </label>
         <br/>
         <label>
-            created_date<input type="text" name="created_date" value="${user.created_date?datetime}"/>
+            createdDate<input type="text" name="createdDate" value="${user.createdDate?datetime}"/>
         </label>
         <br/>
 		<input type="submit" value="提交"/>
