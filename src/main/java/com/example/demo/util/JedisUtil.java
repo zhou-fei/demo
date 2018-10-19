@@ -25,4 +25,7 @@ public class JedisUtil {
 	public String get2() {
 		return redisTemplate.opsForValue().get("a").toString();
 	}
+	public void set() {
+		redisTemplate.opsForValue().set("a","b");
+	}
 }

@@ -4,19 +4,21 @@ import java.util.Date;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.jms.Destination;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.example.demo.model.enumeration.ResponseEnum;
 import com.example.demo.model.vo.Response;
-import com.sun.deploy.net.HttpResponse;
+import com.example.demo.mq.activemq.ActiveMQProducer;
+import org.apache.activemq.command.ActiveMQQueue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.model.domain.User;
@@ -32,6 +34,9 @@ public class WelcomeController {
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private ActiveMQProducer producer;
 
 	@PostConstruct
 	public void logSomething() {
@@ -69,7 +74,7 @@ public class WelcomeController {
 		return "welcomea";
 	}
 
-	@PostMapping("/update")
+	@RequestMapping("/update")
 	public String update(Map<String, Object> model, User user , HttpServletRequest request) {
 		Cookie[] a = request.getCookies();
 		System.out.println(a);
@@ -99,6 +104,16 @@ public class WelcomeController {
 	@GetMapping("/hello")
 	public String hello(Map<String, Object> model, User user) {
 		return "helloworld";
+	}
+
+	@GetMapping("/mq")
+	@ResponseBody
+	public void testMq(){
+		Destination destination = new ActiveMQQueue("myTest.activeMQ");
+
+		for (int i = 0; i < 100; i++) {
+			producer.sendMessage(destination, "Producer发出报文"+ i);
+		}
 	}
 
 }

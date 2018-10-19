@@ -13,9 +13,9 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/demo?characterEncoding=utf-8&amp;useUnicode=true&amp;zeroDateTimeBehavior=convertToNull&amp;allowMultiQueries=true"
+                        connectionURL="jdbc:mysql://192.168.1.153:3306/bimar?characterEncoding=utf-8&amp;useUnicode=true&amp;zeroDateTimeBehavior=convertToNull&amp;allowMultiQueries=true"
                         userId="root"
-                        password="password">
+                        password="">
         </jdbcConnection>
 
         <javaTypeResolver >
@@ -35,9 +35,9 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <table schema="demo"
-               tableName="t_user"
-               domainObjectName="User"
+        <table
+               tableName="scheme_track_line"
+               domainObjectName="SchemeTrackLine"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
