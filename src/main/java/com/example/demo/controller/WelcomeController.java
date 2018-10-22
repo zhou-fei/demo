@@ -13,6 +13,7 @@ import com.example.demo.model.enumeration.ResponseEnum;
 import com.example.demo.model.vo.Response;
 import com.example.demo.mq.activemq.ActiveMQProducer;
 import com.example.demo.mq.rabbitmq.Producer;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +30,7 @@ import com.example.demo.service.UserService;
  * @author phil
  */
 @Controller
+@Slf4j
 public class WelcomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(WelcomeController.class);
