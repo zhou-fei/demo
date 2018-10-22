@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.example.demo.model.enumeration.ResponseEnum;
 import com.example.demo.model.vo.Response;
 import com.example.demo.mq.activemq.ActiveMQProducer;
+import com.example.demo.mq.rabbitmq.Producer;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +38,9 @@ public class WelcomeController {
 
 	@Autowired
 	private ActiveMQProducer producer;
+
+	@Autowired
+	private Producer rProducer;
 
 	@PostConstruct
 	public void logSomething() {
@@ -116,4 +120,9 @@ public class WelcomeController {
 		}
 	}
 
+	@GetMapping("/rq")
+	@ResponseBody
+	public void testRabbitMq(){
+		rProducer.send();
+	}
 }

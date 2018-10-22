@@ -36,10 +36,10 @@ spring:
     password: admin
 
 
-#  rabbitmq:
-#    host: 192.168.0.86
-#    port: 5672
-#    username: admin
-#    password: 123456
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
 
 debug: false

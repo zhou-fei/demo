@@ -1,5 +1,7 @@
 package com.example.demo.other;
 
+import com.example.demo.domain.A;
+import com.example.demo.domain.B;
 import com.example.demo.model.domain.User;
 
 import java.util.ArrayList;
@@ -79,4 +81,10 @@ public class Test {
         user = new User();
         user.setName("xxxx");
     }
+
+    @org.junit.Test
+    public void tt1(){
+        A a = new B();
+    }
+
 }

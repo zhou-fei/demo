@@ -21,6 +21,6 @@ public class Producer {
     public void send() {
         String sendMsg = "hello1 " + new Date();
         System.out.println("Sender1 : " + sendMsg);
-        this.rabbitTemplate.convertAndSend("helloQueue", sendMsg);
+        this.rabbitTemplate.convertAndSend("myTest.rabbitMQ", sendMsg);
     }
 }
