@@ -2,7 +2,7 @@ package com.example.demo.mq.rabbitmq;
 
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 /**
  *
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  * Time: 11:12
  * Created by IntelliJ IDEA.
  */
-@Service
+@Component
 public class Consumer {
     @RabbitHandler
     @RabbitListener(queues = "myTest.rabbitMQ")
